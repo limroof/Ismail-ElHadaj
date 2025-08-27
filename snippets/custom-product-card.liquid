@@ -1,0 +1,101 @@
+<script>
+  {%- assign productjson = all_products[product] | json -%}
+  productListing_variants.push({{productjson}});
+</script>
+
+<div class="product-item">
+  <img
+    src="{{ product.featured_image | image_url }}"
+    class="product-item-image"
+    alt="{{ product.title }}"
+    width="433"
+    height="444"
+    data-itemid="{{ product.id }}"
+  >
+  <div class="overlay-img"></div>
+  <div class="product-item-popup" data-itemid="{{ product.id }}">
+    <span class="close-icon" data-itemid="{{ product.id }}"
+      ><img
+        src="https://cdn.shopify.com/s/files/1/0777/8444/9267/files/close-icon.svg?v=1756169205"
+        alt="Close card icon"
+        width="12"
+        height="12"
+    ></span>
+    <div class="product-item-informations">
+      <div class="p-i-i-top">
+        <div class="p-i-i-top-left">
+          <img
+            src="{{ product.featured_image | image_url }}"
+            alt="{{ product.title }}"
+            width="120"
+            height="140"
+          >
+        </div>
+
+        <div class="p-i-i-top-right">
+          <h3>{{ product.title }}</h3>
+          <span class="price-tag">{{ product.price | money_with_currency }}</span>
+          <div class="product-item-description">{{ product.description }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-item-form">
+      <div class="custom-form">
+        {% for option in product.options_with_values %}
+          <div class="options options_{{ option.name | downcase }}">
+            {% if option.name == 'color' or option.name == 'Color' %}
+              <span>{{ option.name }}</span>
+              <div class="option_value_border">
+                {% for value in option.values %}
+                  <input
+                    type="radio"
+                    id="color_{{ value.id }}"
+                    name="{{ option.name }}{{ product.id }}"
+                    data-optionname="{{ option.name }}"
+                    data-optionvalue="{{ value }}"
+                    data-productid="{{ product.id }}"
+                  >
+                  <label for="color_{{ value.id }}"
+                    ><span style="background-color:{{ value | downcase }}"></span><span>{{ value }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+
+            {% else %}
+              <span>{{ option.name }}</span>
+              <div class="custom-select-option">
+                <select name="options[{{ option.name }}]" data-productid="{{ product.id }}">
+                  <option>{{ section.settings.dropdown_option }}</option>
+                  {% for value in option.values %}
+                    <option
+                      data-optionname="{{ option.name }}"
+                      data-optionvalue="{{ value }}"
+                    >
+                      {{ value }}
+                    </option>
+                  {% endfor %}
+                </select>
+                <div class="select-option-icon-wrapper">
+                  <span classs="select-option-icon">{% render 'arrow-select-option' %}</span>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+        <div class="payment_button">
+          <input type="number" name="quantity" value="1" min="1" max="1" style="display:none;">
+          {% if product.available %}
+            <button class="custom-btn primary" type="button" data-productid="{{product.id }}" disabled>
+              <span>{{ section.settings.add_to_cart_btn }}</span>{% render 'btn-arrow' %}
+            </button>
+          {% else %}
+            <button class="custom-btn primary" type="button" disabled>
+              <span>{{ section.settings.add_to_cart_btn }}</span>{% render 'btn-arrow' %}
+            </button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

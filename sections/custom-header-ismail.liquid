@@ -1,0 +1,76 @@
+{{ 'custom-header-ismail.css' | asset_url | stylesheet_tag }}
+{{ 'globalCss.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'burgerMenu.js' | asset_url }}" defer></script>
+
+<header>
+  <nav id="header-container">
+    <div id="header-menu">
+      <div class="burger">
+        <span class="burger-line-top"></span>
+        <span class="burger-line-mid"></span>
+        <span class="burger-line-bottom"></span>
+      </div>
+      <div id="logo">
+        {% if section.settings.logo %}
+          <a href="{{ routes.root_url }}">
+            <img
+              src="{{ section.settings.logo | image_url }}"
+              alt="{{ section.settings.alt_text }}"
+              width="152"
+              height="19"
+            >
+          </a>
+        {% else %}
+          <span>{{ shop.name }}</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div id="header-text-btn-wrapper">
+      <div id="header-text">
+        <h5>{{ section.settings.text }}</h5>
+      </div>
+
+      <div id="header-btn">
+        {% if section.settings.collection and section.settings.button_text %}
+          <a class="custom-btn secondary" href="{{ section.settings.collection }}" target="_blank">
+            <span>{{ section.settings.button_text }}</span>
+            {% render 'btn-arrow' %}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</header>
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Select a logo"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Alternate text for logo"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button's text"
+    }
+  ]
+}
+{% endschema %}

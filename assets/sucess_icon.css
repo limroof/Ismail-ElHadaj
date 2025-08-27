@@ -1,0 +1,30 @@
+.sucess_add{
+    position:fixed;
+    top: 50px;
+    right: 50px;
+    background-color: green;
+    color: #fff;
+    padding: 10px 20px;
+    display:none;
+    z-index:9999;
+}
+.sucess_add.show{
+    display:block;
+}
+.sucess_add svg{
+    fill:#fff;
+}
+
+.add_fail{
+    position:fixed;
+    top: 50px;
+    right: 50px;
+    background-color: red;
+    color: #fff;
+    padding: 10px 20px;
+    display:none;
+    z-index:9999;
+}
+.add_fail.show{
+    display:block;
+}

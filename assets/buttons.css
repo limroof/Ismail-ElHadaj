@@ -1,0 +1,116 @@
+.custom-btn{
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-size: 16px;
+    min-height: 50px;
+    padding: 10px 15px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+    text-decoration:none;
+    transition: background-color 500ms ease-out, color 500ms ease-out;
+    overflow:hidden;
+    text-transform:uppercase;
+    cursor:pointer;
+}
+.custom-btn span{
+    position:relative;
+    z-index:2;
+}
+.custom-btn.primary{
+    background-color: #000;
+    color:#fff;
+    min-width:220px;
+}
+.custom-btn.primary:disabled{
+    background-color : grey;
+    cursor: not-allowed;
+}
+.custom-btn.primary:not(:disabled):hover{
+    color:#000;
+}
+.custom-btn.primary:not(:disabled):hover:before{
+    transform: translatex(0);
+}
+.custom-btn.primary:not(:disabled):hover svg{
+    fill:#000;
+}
+.custom-btn.primary svg{
+    width: 35px;
+    height: 17px;
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform: translatey(-50%);
+    z-index:2;
+    fill: #fff;
+    transition: fill 500ms ease-out;
+}
+
+.custom-btn.primary::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    transform: translatex(-103%);
+    z-index:1;
+    background-color:#FFF544;
+    top:0;
+    left:0;
+    transition: transform 500ms ease-out;
+}
+
+
+/* YELLOW BUTTON */
+
+.custom-btn.secondary{
+    background-color: #FFF544;
+    color:#000;
+    min-width:207px;
+}
+.custom-btn.secondary:hover{
+    color:#fff;
+}
+.custom-btn.secondary:hover:before{
+    transform: translatex(0);
+}
+.custom-btn.secondary:hover svg{
+    fill:#fff;
+}
+.custom-btn.secondary svg{
+    width:25px;
+    height:10px;
+    position:absolute;
+    right:20px;
+    top:50%;
+    transform: translatey(-50%);
+    z-index:2;
+    fill: #000;
+    transition: fill 500ms ease-out;
+}
+
+.custom-btn.secondary::before{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    transform: translatex(-103%);
+    background-color: #000;
+    z-index:1;
+    top:0;
+    left:0;
+    transition: transform 500ms ease-out;
+}
+
+/* END : YELLOW BUTTON */
+
+
+@media screen and (max-width:1500px){
+    .custom-btn.primary svg{
+        width: 40px;
+        height: 15px;
+        right: 10px;
+    }
+}

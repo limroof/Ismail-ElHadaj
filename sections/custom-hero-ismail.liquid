@@ -1,0 +1,151 @@
+<style>
+  #heroBottom h2{
+    font-size:{{ section.settings.headingSize }}px;
+    font-weight:500;
+    color: #000;
+  }
+    #heroBottom p{
+    font-size:{{ section.settings.paragraphSize }}px;
+    color: #000;
+  }
+</style>
+
+{{ 'custom-page-ismail.css' | asset_url | stylesheet_tag }}
+
+<section id="customHero">
+  <div id="heroTop">
+    {% if section.settings.banner_imageTop != blank %}
+      <img
+        src="{{ section.settings.banner_imageTop | image_url }}"
+        alt="{{ section.settings.alt_textTop }}"
+        width="1440"
+        height="390"
+        class="banner_image_desktop"
+      >
+    {% endif %}
+    {% if section.settings.banner_imageTopMobile != blank %}
+      <img
+        src="{{ section.settings.banner_imageTopMobile | image_url }}"
+        alt="{{ section.settings.alt_textTop }}"
+        width="1440"
+        height="390"
+        class="banner_image_mobile"
+      >
+    {% endif %}
+  </div>
+  <div id="heroBottom">
+    <div id="bottom-left">
+      <div class="bottom-left-wrapper">
+        <h2>{{ section.settings.heading }}</h2>
+        <p class="desktop">{{ section.settings.paragraph }}</p>
+        <p class="mobile">{{ section.settings.paragraphMobile }}</p>
+        <a class="custom-btn primary" href="{{ section.settings.heroCollection.url }}" target="_blank">
+          <span>{{ section.settings.heroButton }}</span>
+          {% render 'btn-arrow' %}
+        </a>
+      </div>
+    </div>
+    <div id="bottom-right">
+      <img
+        src="{{ section.settings.banner_imageBottom | image_url}}"
+        alt="{{ section.settings.alt_textBottom }}"
+        width="890"
+        height="402"
+      >
+    </div>
+  </div>
+  <div id="slogan" class="desktop">
+    <h5>{{ section.settings.slogan }}</h5>
+  </div>
+  <div id="slogan" class="mobile">
+    <h5>{{ section.settings.sloganMobile }}</h5>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Custom Page",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_imageTop",
+      "label": "Choose the top image for the banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_imageTopMobile",
+      "label": "Choose the top mobile image for the banner"
+    },
+    {
+      "type": "text",
+      "id": "alt_textTop",
+      "label": "Alternative text"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_imageBottom",
+      "label": "Choose the bottom image for the banner"
+    },
+    {
+      "type": "text",
+      "id": "alt_textBottom",
+      "label": "Alternative text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "headingSize",
+      "label": "Heading Font-size",
+      "min": 10,
+      "max": 100,
+      "step": 2,
+      "default": 70,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "paragraph",
+      "label": "Paragraph"
+    },
+    {
+      "type": "text",
+      "id": "paragraphMobile",
+      "label": "Paragraph for mobile"
+    },
+    {
+      "type": "range",
+      "id": "paragraphSize",
+      "label": "Paragraph Font-size",
+      "min": 10,
+      "max": 20,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "slogan",
+      "label": "Slogan or information"
+    },
+    {
+      "type": "text",
+      "id": "sloganMobile",
+      "label": "Slogan or information for mobile"
+    },
+    {
+      "type": "collection",
+      "id": "heroCollection",
+      "label": "Collection"
+    },
+    {
+      "type": "text",
+      "id": "heroButton",
+      "label": "Button's text"
+    }
+  ]
+}
+{% endschema %}
