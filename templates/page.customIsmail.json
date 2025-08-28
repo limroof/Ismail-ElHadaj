@@ -12,7 +12,10 @@
     "main": {
       "type": "custom-hero-ismail",
       "settings": {
+        "banner_imageTop": "shopify://shop_images/banner-top.png",
+        "banner_imageTopMobile": "shopify://shop_images/mobileBanner.png",
         "alt_textTop": "Alternative text 1",
+        "banner_imageBottom": "shopify://shop_images/banner-bottom.png",
         "alt_textBottom": "Alternative text 2",
         "heading": "The Gift Guide",
         "headingSize": 70,
