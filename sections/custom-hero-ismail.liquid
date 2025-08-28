@@ -39,6 +39,14 @@
         height="390"
         class="banner_image_mobile"
       >
+    {% else %}
+      <img
+        src="https://cdn.shopify.com/s/files/1/0777/8444/9267/files/mobileBanner.png?v=1756261353"
+        alt="Tisso vison hero image"
+        width="1440"
+        height="390"
+        class="banner_image_mobile"
+      >
     {% endif %}
   </div>
   <div id="heroBottom">
@@ -54,12 +62,21 @@
       </div>
     </div>
     <div id="bottom-right">
-      <img
-        src="{{ section.settings.banner_imageBottom | image_url}}"
-        alt="{{ section.settings.alt_textBottom }}"
-        width="890"
-        height="402"
-      >
+      {% if section.settings.banner_imageBottom != blank %}
+        <img
+          src="{{ section.settings.banner_imageBottom | image_url}}"
+          alt="{{ section.settings.alt_textBottom }}"
+          width="890"
+          height="402"
+        >
+      {% else %}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0777/8444/9267/files/banner-bottom.png?v=1756128669"
+          alt="Tisso vison hero image"
+          width="890"
+          height="402"
+        >
+      {% endif %}
     </div>
   </div>
   <div id="slogan" class="desktop">
