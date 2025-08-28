@@ -15,7 +15,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Click the button to see the custom page",
+            "heading": "<strong>Click the button to see the custom page</strong>",
             "heading_size": "h0"
           }
         },
