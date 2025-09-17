@@ -121,6 +121,7 @@ function addProduct(productid){
 
 
         /* ___________ */
+// THIS FUNCTION CAN BE OPTIMIZED, INSTEAD OF FETCHING 2 TIMES, WE CAN CHECK IN THE BEGINNING IF THE VARIANTS ARE BLACK AND MEDIUM AND THEN ADD THE BLACK-WINTER-JACKET
 
         if((option1[1]=="M" && option2[1] == "Black") || (option2[1]=="M" && option1[1] == "Black")){
           soft_winter_jacked.variants.forEach(function(elem2){
